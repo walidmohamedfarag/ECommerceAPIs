@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
-namespace ECommerceAPI.Areas.Identity.Controller
+namespace ECommerceAPI.Areas.Identity.Controllers
 {
     [Route("[Area]/[controller]")]
     [ApiController]

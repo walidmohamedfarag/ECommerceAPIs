@@ -4,7 +4,7 @@ using System.Text;
 using static System.Net.WebRequestMethods;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace ECommerceAPI.Areas.Identity.Controller
+namespace ECommerceAPI.Areas.Identity.Controllers
 {
     [Route("[Area]/[controller]")]
     [ApiController]

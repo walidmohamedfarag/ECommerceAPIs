@@ -1,4 +1,4 @@
-﻿namespace ECommerceAPI.Areas.Admin.Category
+﻿namespace ECommerceAPI.Areas.Admin.Controllers
 {
     [Route("api/[area]/[controller]")]
     [ApiController]
