@@ -20,6 +20,7 @@ namespace ECommerceAPI
             var scope = app.Services.CreateScope();
             var service = scope.ServiceProvider.GetService<IDBInitializer>();
             service!.Initialize();
+            app.UseStaticFiles();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
