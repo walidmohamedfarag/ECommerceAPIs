@@ -60,7 +60,7 @@ namespace ECommerceAPI.Areas.Identity.Controllers
                 success = "Password Updated Successfully"
             });
         }
-        [HttpPost("Logout")]
+        [HttpGet("Logout")]
         public async Task<IActionResult> Logout()
         {
             var user = await userManager.GetUserAsync(User);
