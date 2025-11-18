@@ -1,6 +1,7 @@
 ﻿
 global using ECommerceAPI.Models;
-global using ECommerceAPI;
+global using ECommerceAPI.DTOs.Response;
+global using Mapster;
 global using ECommerceAPI.DataAccess;
 global using Microsoft.EntityFrameworkCore;
 global using ECommerceAPI.Repositries;

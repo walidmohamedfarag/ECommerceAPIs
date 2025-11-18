@@ -6,8 +6,8 @@ namespace ECommerceAPI.MapsterConfigration
     {
         public static void RegisterMaps(this IServiceCollection services)
         {
-            //TypeAdapterConfig<ApplicationUser, UpdateProfileVM>.NewConfig()
-            //    .Map(d => d.FullName, s => $"{s.FirstName} {s.LastName}").TwoWays();
+            TypeAdapterConfig<ApplicationUser, UserResponse>.NewConfig()
+                .Map(d => d.FullName, s => $"{s.FirstName} {s.LastName}").TwoWays();
         }
     }
 }
