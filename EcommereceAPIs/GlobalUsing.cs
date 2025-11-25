@@ -15,6 +15,8 @@ global using ECommerceAPI.Utiltie.DBInitializer;
 global using Microsoft.AspNetCore.Authorization;
 global using ECommerceAPI.Utiltie;
 global using ECommerceAPI.MapsterConfigration;
+global using System.IdentityModel.Tokens.Jwt;
+
 
 
 

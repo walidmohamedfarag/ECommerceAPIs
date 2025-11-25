@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.Reflection.Metadata.Ecma335;
+﻿using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
-using static System.Net.WebRequestMethods;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ECommerceAPI.Areas.Identity.Controllers
 {
@@ -93,9 +91,29 @@ namespace ECommerceAPI.Areas.Identity.Controllers
                         error = "Invalid Your Email Or Password"
                     });
             }
+            var userRoles = await userManager.GetRolesAsync(user);
+            var clims = new[]
+            {
+                new Claim(ClaimTypes.Name , user.UserName!),
+                new Claim(ClaimTypes.Email , user.Email!),
+                new Claim(ClaimTypes.Role , string.Join(", ",userRoles)),
+                new Claim(ClaimTypes.NameIdentifier , user.Id!),
+                new Claim(JwtRegisteredClaimNames.Iat , Guid.NewGuid().ToString()),
+            };
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("yyuysuyiusdussdjncncxmnmncxmnjdskjskjklaklksakllasklklasklasad"));
+            var credential = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var token = new JwtSecurityToken
+                (
+                issuer: "https://localhost:7218",
+                audience: "https://localhost:7218",
+                claims: clims,
+                expires: DateTime.Now.AddMinutes(10),
+                signingCredentials: credential
+                );
             return Ok(new
             {
-                success = "Your Login Successfully"
+                success = "Your Login Successfully",
+                Token = new JwtSecurityTokenHandler().WriteToken(token)
             });
         }
 

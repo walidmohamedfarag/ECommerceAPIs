@@ -24,7 +24,7 @@ namespace ECommerceAPI.Utiltie.DBInitializer
             {
                 if (DBContext.Database.GetPendingMigrations().Any())
                     DBContext.Database.Migrate();
-                if (roleManager.Roles.IsNullOrEmpty())
+                if (roleManager.Roles is null)
                 {
                     roleManager.CreateAsync(new(StaticRole.SUPER_ADMIN)).GetAwaiter().GetResult();
                     roleManager.CreateAsync(new(StaticRole.ADMIN)).GetAwaiter().GetResult();
