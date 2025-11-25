@@ -30,6 +30,7 @@ namespace ECommerceAPI
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

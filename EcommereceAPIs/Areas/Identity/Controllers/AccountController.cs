@@ -98,7 +98,7 @@ namespace ECommerceAPI.Areas.Identity.Controllers
                 new Claim(ClaimTypes.Email , user.Email!),
                 new Claim(ClaimTypes.Role , string.Join(", ",userRoles)),
                 new Claim(ClaimTypes.NameIdentifier , user.Id!),
-                new Claim(JwtRegisteredClaimNames.Iat , Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("yyuysuyiusdussdjncncxmnmncxmnjdskjskjklaklksakllasklklasklasad"));
             var credential = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -107,7 +107,7 @@ namespace ECommerceAPI.Areas.Identity.Controllers
                 issuer: "https://localhost:7218",
                 audience: "https://localhost:7218",
                 claims: clims,
-                expires: DateTime.Now.AddMinutes(10),
+                expires: DateTime.Now.AddMinutes(20),
                 signingCredentials: credential
                 );
             return Ok(new
